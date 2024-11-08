@@ -9,7 +9,6 @@ export default async function Groups() {
       <h1>Groups</h1>
       <div className="flex flex-row flex-wrap  gap-4 justify-center">
         {groups?.map((group) => {
-          console.log(group, "group");
           return (
             <>
               <Link

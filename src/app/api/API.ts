@@ -1,40 +1,35 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 const API_URL = process.env.API_URL;
+
+export async function getUserById({ id }: { id: string }) {
+  const response = await fetch(`${API_URL}/users/${id}`);
+  const user = await response.json();
+  return user;
+}
 
 export async function getGroups() {
   const response = await fetch(
-    `${API_URL}groups/users/f3b36ac4-a9c0-4a45-a68e-ab4a56ff7081`
+    `http://ec2-54-246-237-164.eu-west-1.compute.amazonaws.com:3000/teams/users/0f4c7c0c-9b72-11ef-a55e-0227ff40ba33`
   );
   const groups = await response.json();
+
   return groups;
 }
 
 export async function getGroup(id: string) {
-  const response = await fetch(`${API_URL}groups/${id}`);
+  const response = await fetch(`${API_URL}/groups/${id}`);
   const group = await response.json();
   return group;
 }
 
-export async function getEventsForUser() {
+export async function getEventsForUserById(id: string) {
   try {
-    const groups = await getGroups();
-
-    const events = await Promise.all(
-      groups.map(async (group) => {
-        const response = await fetch(`${API_URL}events/groups/${group.id}`);
-        return response.json();
-      })
+    const response = await fetch(
+      `http://ec2-54-246-237-164.eu-west-1.compute.amazonaws.com:3000/events/users/${id}`
     );
+    const events = await response.json();
 
-    return events.flat();
+    return events;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
-
-export const getUserById = async (id: string) => {
-  const response = await fetch(`${API_URL}users/${id}`);
-  return response.json();
-};

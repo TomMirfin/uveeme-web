@@ -11,7 +11,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 /* width */
 ::-webkit-scrollbar {
@@ -20,17 +20,32 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #888;
+  background: #ffffff;
   border-radius: 5px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #08bcc9;
+  background: #0882c9;
   border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #c5c5c5;
+}
+
+.slick-slide > div {
+  margin: 10px;
+  height: 220px;
+  width: 220px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: #08bcc9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+div#fullcalendar .fc-header-title h2 {
+  color: #0f0;
 }
