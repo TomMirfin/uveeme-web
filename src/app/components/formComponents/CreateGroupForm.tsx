@@ -50,7 +50,7 @@ export default function CreateGroupForm() {
     } else {
       toast.success("Group created successfully");
       await createGroup({ data: result.data }).then((data) => {
-        router.push(`/groups/${data.team.id}`);
+        router.push(`/groups/${data.team.Id}`);
       });
     }
   };
