@@ -1,12 +1,7 @@
-import Form from "next/form";
+"use server";
 
-export default function Page() {
-  return (
-    <Form action="/search">
-      {/* On submission, the input value will be appended to 
-          the URL, e.g. /search?query=abc */}
-      <input name="query" />
-      <button type="submit">Submit</button>
-    </Form>
-  );
+import CreateGroupForm from "@/app/components/formComponents/CreateGroupForm";
+
+export default async function CrateGroupForm() {
+  return <CreateGroupForm />;
 }

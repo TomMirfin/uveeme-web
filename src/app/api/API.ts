@@ -1,3 +1,5 @@
+import { revalidatePath } from "next/cache";
+
 const API_URL = process.env.API_URL;
 
 export async function getUserById({ id }: { id: string }) {
@@ -31,5 +33,39 @@ export async function getEventsForUserById(id: string) {
     return events;
   } catch (error) {
     console.error(error);
+  }
+}
+
+export async function createGroup({
+  data,
+}: {
+  data: { name: string; description: string };
+}): Promise<any> {
+  try {
+    const response = await fetch(
+      `http://ec2-54-246-237-164.eu-west-1.compute.amazonaws.com:3000/teams`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          description: data.description,
+          userId: "0f4c7c0c-9b72-11ef-a55e-0227ff40ba33",
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to create group: ${response.statusText}`);
+    }
+
+    const group = await response.json();
+
+    return group;
+  } catch (error) {
+    console.error("Error creating group:", error);
+    throw error;
   }
 }

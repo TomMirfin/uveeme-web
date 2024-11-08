@@ -2,26 +2,27 @@ import { getGroups } from "../api/API";
 import Link from "next/link";
 import { Happy_Monkey } from "next/font/google";
 import { UserGroupIcon } from "@heroicons/react/24/solid";
+import { GroupType } from "../../types/types";
 
 export default async function GroupsHomePage() {
   const groups = await getGroups();
 
   return (
-    <div className="h-96 flex mt-4 flex-col bg-gradient-to-b from-white to-indigo-300 rounded-br-lg rounded-bl-lg overflow-y-visible">
+    <div className="h-96 flex flex-col pt-4 bg-gradient-to-t from-white to-indigo-300 rounded-br-lg rounded-bl-lg overflow-y-auto">
       <h2 className="text-center text-2xl text-slate-700 font-[family-name:var(--font-geist-sans)]">
         <strong>Your Groups</strong>
       </h2>
       <div
-        className="flex flex-col p-4 gap-6 sm:mx-36 shadow-2xl mx-10 text-center"
+        className="flex flex-col p-4 gap-6 sm:mx-36  mx-10 text-center"
         style={{ borderRadius: "10px" }}
       >
         {groups && groups.length > 0 ? (
-          groups.map((group) => {
+          groups.map((group: GroupType) => {
             return (
               <Link
-                href={`/groups/${group.id}`}
-                key={group.id}
-                className=" p-4 font-[family-name:var(--font-geist-sans)] "
+                href={`/groups/${group.Id}`}
+                key={group.Id}
+                className=" p-4 font-[family-name:var(--font-geist-sans)] shadow-2xl"
               >
                 <div>
                   <strong className="text-xl sm:text-2xl text-black">

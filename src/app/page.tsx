@@ -12,7 +12,7 @@ export default function Home() {
       <div className="col-span-1 ">
         <EventsHomepage />
       </div>
-      <div className="col-span-3  bg-gradient-to-t from-white to-indigo-200 rounded-t-xl">
+      <div className="col-span-3  bg-gradient-to-t rounded-t-xl">
         <EventListHomepage />
       </div>
     </div>

@@ -11,17 +11,17 @@ import Logo from "../../../public/logo";
 
 export default function Nav() {
   return (
-    <nav className="shadow-md  border-b-2 font-[family-name:var(--font-geist-sans)]">
+    <nav className="shadow-md font-[family-name:var(--font-geist-sans)] bg-indigo-300">
       <div className="flex flex-row justify-between items-center p-4 md:p-6">
         {/* Logo */}
         <Logo />
         {/* Icons */}
         <div className="flex space-x-4 md:space-x-6 items-center">
           <Link href="/groups/createGroup">
-            <UserGroupIcon className="h-8 w-8 md:h-10 md:w-10 text-indigo-400" />
+            <UserGroupIcon className="h-8 w-8 md:h-10 md:w-10 text-indigo-600" />
           </Link>
-          <BellAlertIcon className="h-8 w-8 md:h-10 md:w-10 text-indigo-400" />
-          <UserCircleIcon className="h-8 w-8 md:h-10 md:w-10 text-indigo-400" />
+          <BellAlertIcon className="h-8 w-8 md:h-10 md:w-10 text-indigo-600" />
+          <UserCircleIcon className="h-8 w-8 md:h-10 md:w-10 text-indigo-600" />
         </div>
       </div>
     </nav>

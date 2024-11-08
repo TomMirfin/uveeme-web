@@ -1,5 +1,5 @@
 "use client";
-import { Event } from "../../../../types/eventsTypes";
+
 import React from "react";
 import { getEventsForUserById } from "../../api/API";
 import EventCard from "./EventCard";
@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useQuery } from "@tanstack/react-query";
 import { init } from "next/dist/compiled/webpack/webpack";
-
+import { EventType } from "../../../types/types";
 export default function EventListHomepage() {
   const userId = "0f4c7c0c-9b72-11ef-a55e-0227ff40ba33";
 
@@ -49,11 +49,11 @@ export default function EventListHomepage() {
   };
 
   return (
-    <Slider className="flex flex-row gap-2 ml-6 mb-12" {...settings}>
+    <Slider className="flex flex-row mb-12" {...settings}>
       {data && data.length > 0 ? (
-        data.map((event: Event) => {
+        data.map((event: EventType) => {
           if (new Date(event.event_date) < new Date()) {
-            return <EventCard key={event.id} data={event} />;
+            return <EventCard key={event.Id} data={event} />;
           }
         })
       ) : (
